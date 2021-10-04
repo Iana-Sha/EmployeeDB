@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmployeeDB.MainPage">
+    <ScrollView>
+        <StackLayout Margin="20,35,20,20">
+
+            <Image Source="champlain"/>
+
+            <Entry x:Name="nameEntry" Placeholder="Employee name"/>
+            <Entry x:Name="salaryEntry" Placeholder="Salary"/>
+        
+            <RadioButton x:Name="dayTime" Margin="0" GroupName="time"
+                         Content="Day time" />
+            <RadioButton x:Name="evening" Margin="0" GroupName="time"
+                         Content="Evening time" />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12*"/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox x:Name="hockey" Margin="0" Grid.Row="0" Grid.Column="0"/>
+                <Label x:Name="hk" Padding="0,5,0,0"  Text="Plays Hockey" Grid.Row="0" Grid.Column="1" FontSize="14"/>
+
+                <CheckBox x:Name="basketball" Margin="0" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="bb" Padding="0,5,0,0"  Text="Plays Basketball" Grid.Row="1" Grid.Column="1" FontSize="14"/>
+
+                <CheckBox x:Name="none" Margin="0" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="nn" Padding="0,5,0,0"  Text="Plays None" Grid.Row="2" Grid.Column="1" FontSize="14"/>
+
+            </Grid>
+
+
+            <Button Text="ADD" Clicked="AddButtonClicked"/>
+            <Button Text="DISPLAY" Clicked="DisplayButtonClicked"/>
+            <Label x:Name="lbl" Text="Employee List:" FontSize="24"/>
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+
+                            <Grid Padding="10" RowDefinitions="Auto, 20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                            
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="Medium"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Salary}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Time}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Activity}" TextColor="Silver" FontSize="Small"/>
+                            </Grid>
+                        
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
